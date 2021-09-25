@@ -1,0 +1,222 @@
+{
+   "title": "5times1",
+   "description": "",
+   "link": "https://5times1.blogspot.com/",
+   "image": "",
+   "category": [
+      "RxJS",
+      "Firebase",
+      "ReactNative",
+      "NewHardParts"
+   ],
+   "items": [
+      {
+         "title": "Asynchronous Programming in JavaScript (with Rx.js Observables) (frontendmasters)",
+         "description": "&lt;p style=&quot;text-align: left;&quot;&gt;Observable vs. Promise&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;observable is lazy: just an object with forEach method; promise is eager.&lt;/li&gt;&lt;li&gt;promise does something right away, observable does nothing until forEach is called&lt;/li&gt;&lt;li&gt;you can&#39;t retry the promise&lt;/li&gt;&lt;li&gt;an observable can be converted to promise; the other way around can&#39;t be done because promise starts work on initialization&amp;nbsp;&lt;br /&gt;&lt;/li&gt;&lt;/ul&gt;Observable vs. Node stream&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;in observable we have producers who push data, and forEach that consumes it; streams are both&lt;/li&gt;&lt;li&gt;observable can stop (dispose) listening, but it doesn&#39;t have an option to pause. it&#39;s either on, or it isn&#39;t going to get the data&lt;/li&gt;&lt;li&gt;Node stream can push and pull data, but consumer has the option to pause, and then resume where it paused&lt;/li&gt;&lt;li&gt;there are no streams on frontend (no such APIs)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;",
+         "link": "https://5times1.blogspot.com/2021/09/asynchronous-programming-in-javascript_22.html",
+         "published": 1632287400000,
+         "created": 1632287400000,
+         "category": {
+            "$text": "RxJS",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Asynchronous Programming in JavaScript (with Rx.js Observables) (frontendmasters)",
+         "description": "&lt;p&gt;&amp;nbsp;exercises&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;clicks.throttleTime(1000). concatMap( - is a simple throttle method&lt;/li&gt;&lt;li&gt;debounceTime is similar to throttleTime except it keeps track of the most recent value from the Observable, and emits that only when the defined duration has passed without any other value appearing on the source Observable&lt;/li&gt;&lt;li&gt;distinctUntilChanged() only emits when current value differs from the last&lt;/li&gt;&lt;li&gt;scan() - sort of similar to reduce, but reduce shows only the final value, while scan shows EVERY value emitted on source observable&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;",
+         "link": "https://5times1.blogspot.com/2021/09/asynchronous-programming-in-javascript_16.html",
+         "published": 1631769960000,
+         "created": 1631769960000,
+         "category": {
+            "$text": "RxJS",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Asynchronous Programming in JavaScript (with Rx.js Observables) (frontendmasters)",
+         "description": "&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;HTTP requests are usually exposed via callback APIs (actually, mostly promise-based now :-))&lt;/li&gt;&lt;li&gt;it gets more complicated when there&#39;s need for orchestrating HTTP reqs&lt;/li&gt;&lt;li&gt;async error handling also hard&lt;/li&gt;&lt;li&gt;if req/resp can be a sequence (to convert to Observable), it would have one item, and then completed&lt;/li&gt;&lt;li&gt;keeping it as a sequence (pseudoarray) instead of scalar helps maintain same functions we used on sequences&lt;/li&gt;&lt;li&gt;&lt;b&gt;Observable.create()&lt;/b&gt; can&amp;nbsp;convert any asynchronous API into an Observable, as long as they can:&lt;/li&gt;&lt;ul&gt;&lt;li&gt;receive data&lt;/li&gt;&lt;li&gt;receive error information&lt;/li&gt;&lt;li&gt;notify when operation completed&lt;/li&gt;&lt;li&gt;notify when to unsubscribe&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;Observable.create(function(observer) {&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t&lt;/span&gt;var subscribed = true;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp; &amp;nbsp; var data, error // this will hook to some API&lt;/span&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t&lt;/span&gt;// If client is still interested in the results, send them.&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t&lt;/span&gt;if (subscribed) {&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t\t&lt;/span&gt;// Send data to the client&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t\t&lt;/span&gt;observer.next(data);&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t\t&lt;/span&gt;// Immediately complete the sequence&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t\t&lt;/span&gt;observer.complete();&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t&lt;/span&gt;// If client is still interested in the results, send them.&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t&lt;/span&gt;if (subscribed) {&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t\t&lt;/span&gt;// Inform the client that an error occurred.&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t\t&lt;/span&gt;observer.error(error);&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t&lt;/span&gt;// Definition of the Subscription objects unsubscribe method.&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t&lt;/span&gt;return function() {&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t\t&lt;/span&gt;subscribed = false;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t\t&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;\t\t&lt;/span&gt;});&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;",
+         "link": "https://5times1.blogspot.com/2021/09/asynchronous-programming-in-javascript_15.html",
+         "published": 1631682180000,
+         "created": 1631682180000,
+         "category": {
+            "$text": "RxJS",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Asynchronous Programming in JavaScript (with Rx.js Observables) (frontendmasters)",
+         "description": "&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;event = array except event is async &amp;amp; never completes&lt;/li&gt;&lt;li&gt;if we convert Events to Observable Objects, we can use array-like functions to transform them&lt;/li&gt;&lt;li&gt;fromEvent() converts an event to Observable&lt;/li&gt;&lt;li&gt;someObservable.do() can traverse an event &quot;array&quot;, but needs unsubscribe()&amp;nbsp;&lt;/li&gt;&lt;li&gt;take() removes the need to unsubscribe:&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;buttonClicks.take(1).forEach(function() {&lt;br /&gt; &lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;alert(&quot;Button was clicked once. Stopping Traversal.&quot;);&lt;br /&gt; });&lt;/blockquote&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;&amp;nbsp;.takeUntil(stopEventObs) takes an observable as an argument, and unsubscribes when it gets any response from it&lt;/li&gt;&lt;li&gt;when using methods on Observables, unlike arrays, you cannot use indexes like arr[2]&lt;/li&gt;&lt;li&gt;most important methods on an Observable:&lt;/li&gt;&lt;ul&gt;&lt;li&gt;map()&lt;/li&gt;&lt;li&gt;filter()&lt;/li&gt;&lt;li&gt;concatAll()&lt;/li&gt;&lt;li&gt;concatMap()&lt;/li&gt;&lt;li&gt;reduce()&lt;/li&gt;&lt;li&gt;zip()&lt;/li&gt;&lt;li&gt;take()&lt;/li&gt;&lt;li&gt;takeUntil()&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;",
+         "link": "https://5times1.blogspot.com/2021/09/asynchronous-programming-in-javascript_10.html",
+         "published": 1631249520000,
+         "created": 1631249520000,
+         "category": {
+            "$text": "RxJS",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Firebase with React, v2 (frontendmasters)",
+         "description": "&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;&lt;b&gt;security rules&lt;/b&gt; can be added to each collection or document&lt;/li&gt;&lt;/ul&gt;&lt;blockquote&gt; service &amp;lt;&amp;lt;name&amp;gt;&amp;gt; {&lt;br /&gt;  &lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;match &amp;lt;&amp;lt;path&amp;gt;&amp;gt; {&lt;br /&gt;    &lt;span&gt;&amp;nbsp;&amp;nbsp; &lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&amp;nbsp;&lt;/span&gt;allow &amp;lt;&amp;lt;methods&amp;gt;&amp;gt; : if &amp;lt;&amp;lt;condition&amp;gt;&amp;gt;&lt;br /&gt;  &lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;}&lt;br /&gt;}&lt;/blockquote&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;only positive rules are applied. if any rule allows for something, other rules cannot petition it&lt;/li&gt;&lt;li&gt;by default everything is allowed, as soon as there is a rule: nothing is&lt;/li&gt;&lt;li&gt;example of a sane rule (using auth.uid &amp;amp; roles in documents related to the said user):&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;service cloud.firestore {&lt;br /&gt;  &lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;match /databases/{database}/documents {&lt;br /&gt;    &lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;match /some_collection/{document} {&lt;br /&gt;     &lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;allow read: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == &quot;Reader&quot;&lt;br /&gt;     &lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;allow write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == &quot;Writer&quot;&lt;br /&gt;    &lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;}&lt;br /&gt;  &lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;}&lt;br /&gt;}&lt;/blockquote&gt;&lt;p&gt;&lt;/p&gt;&lt;div&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;checking for roles using `get` (as in the example) or `exists` carry charges for read operations!&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;",
+         "link": "https://5times1.blogspot.com/2021/09/firebase-with-react-v2-frontendmasters_9.html",
+         "published": 1631163540000,
+         "created": 1631163540000,
+         "category": {
+            "$text": "Firebase",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Asynchronous Programming in JavaScript (with Rx.js Observables) (frontendmasters)",
+         "description": "&lt;p&gt;&lt;/p&gt;&lt;div&gt;exercises&lt;/div&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;in relational data structure (like SQL) a child holds references to parents (campaignId), while hierarchical structure (like JSON, MongoDB or Firestore) holds reference to children inside a parent&lt;/li&gt;&lt;li&gt;using functions we learned, we can traverse (query) both ways - even from child to parent&lt;/li&gt;&lt;li&gt;OBSERVABLE&lt;/li&gt;&lt;ul&gt;&lt;li&gt;similar to event:&amp;nbsp;a sequence of values that a data producer pushes to the consumer&lt;/li&gt;&lt;li&gt;unlike event:&amp;nbsp;Observable can signal to a listener that it has completed&lt;/li&gt;&lt;li&gt;querying Observables allows us to create data sets that react and update as the system changes over time = reactive programming&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;",
+         "link": "https://5times1.blogspot.com/2021/09/asynchronous-programming-in-javascript_8.html",
+         "published": 1631078220000,
+         "created": 1631078220000,
+         "category": {
+            "$text": "RxJS",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Asynchronous Programming in JavaScript (with Rx.js Observables) (frontendmasters)",
+         "description": "exercises with made-up functions:&lt;div&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;concatMap - maps through array, and then concatAll&lt;/li&gt;&lt;ul&gt;&lt;li&gt;tip: usually there are n-1 concatAlls if there are n maps. therefore - with concatMap = 1 map, other concatMaps&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;reduce - like reduce, but returns an array with single value instead of single value&lt;/li&gt;&lt;li&gt;zip - merges elements of two arrays one by one (like zipper on trousers)&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;",
+         "link": "https://5times1.blogspot.com/2021/09/asynchronous-programming-in-javascript_7.html",
+         "published": 1630990140000,
+         "created": 1630990140000,
+         "category": {
+            "$text": "RxJS",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Firebase with React, v2 (frontendmasters)",
+         "description": "&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;a document database requires more defensive programming because there&#39;s no schema to fall back to: any future changes can be missing in former documents&lt;/li&gt;&lt;li&gt;authorization: enable on firebase console&lt;/li&gt;&lt;li&gt;simple implementation on fronten&lt;/li&gt;&lt;li&gt;lacking security without functions/regular backend&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;",
+         "link": "https://5times1.blogspot.com/2021/09/firebase-with-react-v2-frontendmasters_6.html",
+         "published": 1630939020000,
+         "created": 1630939020000,
+         "category": {
+            "$text": "Firebase",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Firebase with React, v2 (frontendmasters)",
+         "description": "&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;firestore.collection(&#39;col&#39;).where(&#39;foo&#39;, &#39;==&#39;, &#39;bar&#39;).get().then(&lt;b&gt;querySnapshot&lt;/b&gt; =&amp;gt; {&amp;nbsp;&lt;/li&gt;&lt;ul&gt;&lt;li&gt;querySnapshot contains one or more &lt;b&gt;documentSnapshots&lt;/b&gt; and some props &amp;amp; methods:&lt;/li&gt;&lt;ul&gt;&lt;li&gt;docs: Array&amp;lt;QueryDocumentSnapshot&amp;lt;T&amp;gt;&amp;gt;&lt;/li&gt;&lt;li&gt;empty: boolean&lt;/li&gt;&lt;li&gt;forEach: does what it sounds like&lt;/li&gt;&lt;li&gt;isEqual (other :&amp;nbsp; QuerySnapshot &amp;lt; T &amp;gt; ): boolean&lt;/li&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;documentSnapshot&lt;/li&gt;&lt;ul&gt;&lt;li&gt;exists: boolean&lt;/li&gt;&lt;li&gt;id: string&lt;/li&gt;&lt;li&gt;data()&lt;/li&gt;&lt;li&gt;get(fieldPath:&amp;nbsp; string | FieldPath): any&lt;/li&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;collection.&lt;b&gt;add&lt;/b&gt;(data :&amp;nbsp; T): Promise&amp;lt;DocumentReference&amp;lt;T&amp;gt;&amp;gt;:&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;blockquote&gt;let collectionRef = firestore.collection(&#39;col&#39;); &lt;br /&gt;collectionRef.add({foo: &#39;bar&#39;}).then(documentReference =&amp;gt; {.&amp;nbsp;&lt;br /&gt;&amp;nbsp; &amp;nbsp; console.log(`Added document with name: ${documentReference.id}`); &lt;br /&gt;});&lt;/blockquote&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;firestore.collection(&#39;col&#39;).doc(&#39;doc&#39;).&lt;b&gt;delete&lt;/b&gt;()&amp;nbsp;&lt;/li&gt;&lt;ul&gt;&lt;li&gt;returns promise with delete time&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;&lt;b&gt;onSnapshot&lt;/b&gt;: real-time listening to shapshots&amp;nbsp;&lt;/li&gt;&lt;ul&gt;&lt;li&gt;accepts EITHER a single observer with next and error callbacks (onCompletion will never fire because stream never ends)&lt;/li&gt;&lt;li&gt;...or two callbacks:&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;blockquote&gt;const unsubscribe&amp;nbsp;= firestore.doc(&#39;col/doc&#39;).onSnapshot(documentSnapshot =&amp;gt; {&amp;nbsp;&lt;div&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;if (documentSnapshot.exists) {&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;console.log(documentSnapshot.data());&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;}&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;}, err =&amp;gt; {&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;console.log(`Encountered error: ${err}`);&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;}&lt;/div&gt;&lt;div&gt;);&lt;/div&gt;&lt;div&gt;unsubscribe();&lt;/div&gt;&lt;/blockquote&gt;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;",
+         "link": "https://5times1.blogspot.com/2021/09/firebase-with-react-v2-frontendmasters_3.html",
+         "published": 1630645920000,
+         "created": 1630645920000,
+         "category": {
+            "$text": "Firebase",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Firebase with React, v2 (frontendmasters)",
+         "description": "&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;Firebase used to have only Realtime Database, but is now pushing Firestore, also realtime db&lt;/li&gt;&lt;li&gt;IT&#39;S THE SAME database, and the same queries I already used on Google Cloud!&lt;/li&gt;&lt;li&gt;Firestore reasonably cheap; can billing alerts etc.&lt;/li&gt;&lt;li&gt;Firestore: collection &amp;gt; documents &amp;gt; other collections &amp;gt; other documents etc.&amp;nbsp;&lt;/li&gt;&lt;li&gt;query only gets the level required, if data down the tree needed - needs to be specified&lt;/li&gt;&lt;ul&gt;&lt;li&gt;firestore.collection(&quot;posts&quot;).doc(&quot;dfklsa34sjd&quot;).collection(&quot;comments&quot;)&lt;/li&gt;&lt;li&gt;...is the same as: firestore.collection(&quot;posts/dfklsa34sjd/comments&quot;)&lt;/li&gt;&lt;li&gt;if document-level needs to get accessed:&lt;br /&gt;firestore.doc(&quot;post/dfklsa34sjd&quot;)&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;less database normalization (process of structuring a database,&amp;nbsp; in accordance with normal forms)&lt;/li&gt;&lt;li&gt;has SQL-like queries:&lt;/li&gt;&lt;ul&gt;&lt;li&gt;firestore.collection(&quot;posts&quot;).orderBy(&quot;createdAt&quot;, &quot;desc&quot;)&lt;/li&gt;&lt;li&gt;firestore.collection(&quot;posts&quot;).where(&quot;stars&quot;, &quot;&amp;gt;=&quot;, 5)&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;",
+         "link": "https://5times1.blogspot.com/2021/09/firebase-with-react-v2-frontendmasters.html",
+         "published": 1630558920000,
+         "created": 1630558920000,
+         "category": {
+            "$text": "Firebase",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Asynchronous Programming in JavaScript (with Rx.js Observables) (frontendmasters)",
+         "description": "&lt;p&gt;&amp;nbsp;exercises&lt;/p&gt;",
+         "link": "https://5times1.blogspot.com/2021/09/asynchronous-programming-in-javascript.html",
+         "published": 1630507740000,
+         "created": 1630507740000,
+         "category": {
+            "$text": "RxJS",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Asynchronous Programming in JavaScript (with Rx.js Observables) (frontendmasters)",
+         "description": "&lt;p&gt;&lt;/p&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;&lt;b&gt;takeUntil &lt;/b&gt;&lt;br /&gt;{…1…2…………3}.takeUntil({……………4}).&amp;nbsp; &amp;nbsp;==&amp;gt;&amp;nbsp;{…1…2…}&lt;br /&gt;first is source collection, second is stop (the second stops listening to source)&lt;br /&gt;if the source collection calls for onComplete, this method calls dispose on stop collection;&amp;nbsp;as soon as the stop collection emits a onNext or a onError, this method calls onComplete on the source collection&lt;br /&gt;np. mouseUp&lt;/li&gt;&lt;li&gt;&lt;b&gt;mergeAll&lt;/b&gt; - like concatAll, but doesn&#39;t align events stream by stream, but at the same time, concurrently putting on collection whatever data comes next from whatever stream&lt;/li&gt;&lt;li&gt;&lt;b&gt;switchLatest&lt;/b&gt; - like mergeAll, but stopes first stream (subscription.dispose()) as soon as another starts producing data - removes the need for stopping events, does it by itself: move mouse example: (mouseDown, mouseMove, mouseUp) -&amp;gt; mouseUp disposes of mouseMove, and then disposes of itself&lt;/li&gt;&lt;li&gt;debouncing = any strategy to make sure time-consuming tasks don&#39;t get called too often (eg. xhr calls when making an autocomplete)&lt;/li&gt;&lt;li&gt;throttling = like debouncing but throttling executes at a regular interval, debouncing only after pause. 1s debounce will execute 1s after the LAST click, whenever he happens, 1s throttle will fire after 1s from FIRST click, and after the next, but not less than 1s from the one before&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;Autocomplete example:&lt;/div&gt;&lt;blockquote&gt;var searchResultSets = keyPresses. throttle(250). &lt;br /&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;map(&lt;br /&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;key =&amp;gt; getJSON(“/searchResults?q=” + input.value). retry(3)&lt;br /&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;). &lt;br /&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;switchLatest(); &lt;br /&gt;&lt;br /&gt;searchResultSets.forEach(&lt;br /&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;resultSet =&amp;gt; updateSearchResults(resultSet), &lt;br /&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;error =&amp;gt; showMessage(“the server appears to be down.”)&lt;br /&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;);&lt;/blockquote&gt;&lt;p&gt;&lt;/p&gt;",
+         "link": "https://5times1.blogspot.com/2021/08/asynchronous-programming-in-javascript_31.html",
+         "published": 1630421700000,
+         "created": 1630421700000,
+         "category": {
+            "$text": "RxJS",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "Asynchronous Programming in JavaScript (with Rx.js Observables) (frontendmasters)",
+         "description": "&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;&amp;nbsp;async problems: race conditions, memory leaks (e.g. forget remove event listener), complex state, error handling&lt;/li&gt;&lt;li&gt;concatAll: [ [1], [2, 3], [], [4] ].concatAll() =&amp;gt; [1, 2, 3, 4] (1 flatten 1 level, remove empty)&lt;/li&gt;&lt;li&gt;authors of Design Pattern missed this symmetry between iterator and observer (observer = iterator that pushes data without being asked for it)&lt;/li&gt;&lt;li&gt;idea: give iterators and observers uniformed API&lt;/li&gt;&lt;li&gt;observable from event: var mouseMoves = Observable.fromEvent(element, “mousemove”);&amp;nbsp;&lt;/li&gt;&lt;li&gt;observable syntax:&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;i&gt;&lt;/i&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;i&gt;var subscription = mouseMoves.forEach(&lt;br /&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;event =&amp;gt; console.log(event),&lt;br /&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;error =&amp;gt; console.error(error),&lt;br /&gt;&lt;span&gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&lt;/span&gt;() =&amp;gt; console.log(“done”)&lt;br /&gt;);&lt;br /&gt;subscription.dispose();&lt;/i&gt;&lt;/blockquote&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;concatAll preserves order of data stream, always waiting for previous stream to complete, before adding data from the next, BUT caching it, thus saving time, a little like Promise.all&lt;/li&gt;&lt;/ul&gt;",
+         "link": "https://5times1.blogspot.com/2021/08/asynchronous-programming-in-javascript.html",
+         "published": 1630252440000,
+         "created": 1630252440000,
+         "category": {
+            "$text": "RxJS",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "The New Hard Parts (frontendmasters)",
+         "description": "&lt;div&gt;&lt;p&gt;Completed lectures. &lt;br /&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;Argument vs. parameter of function:&lt;br /&gt;Parameter is variable in the declaration of function.&lt;br /&gt;Argument is the actual value of this variable that gets passed to function.&lt;br /&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;const func = (parameter) =&amp;gt; {}&lt;br /&gt;func(argument);&lt;/blockquote&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;&amp;nbsp;Stack:&lt;br /&gt;- push = add&lt;br /&gt;- pop = remove&lt;/li&gt;&lt;li&gt;&amp;nbsp;Event loop + callback (task) queue &amp;lt; microtask (job) queue (microtask is for Promises and MutationObserver, have higher priority, can be added by queueMicrotask())&lt;/li&gt;&lt;li&gt;Callback queue: Only tasks which were &lt;i&gt;already in the task queue&lt;/i&gt; when the event  loop pass began will be executed during the current iteration. The rest  will have to wait until the following iteration.&lt;/li&gt;&lt;li&gt;Microtask queue: Only returns control after there&#39;s nothing queued, if new things added during the iteration - will be executed after older are done, and before the control is relinquished. Also, microtasks can add new microtasks theoretically never returning control to main thread if looped.&lt;br /&gt;&lt;/li&gt;&lt;/ul&gt;&lt;blockquote&gt;log(&quot;Before enqueueing the microtask&quot;); &lt;br /&gt;queueMicrotask(() =&amp;gt; {&lt;br /&gt;&amp;nbsp;&amp;nbsp; log(&quot;The microtask has run.&quot;)&lt;br /&gt; }); &lt;br /&gt;log(&quot;After enqueueing the microtask&quot;);&amp;nbsp; &lt;/blockquote&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;&amp;nbsp;Jake Archibald talks about microtasks, and is an educator to look for!&lt;/li&gt;&lt;li&gt;&amp;nbsp;Iterators can release data in flows, keeping the info what comes next inside themselves.&lt;/li&gt;&lt;li&gt;Generators can &quot;pause&quot; execution of a function (actually releasing the execution context  from callstack, and putting it back on!) with yield keyword.&lt;br /&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;blockquote&gt; function *createFlow(){&lt;br /&gt; const num = 10&lt;br /&gt; const newNum = yield num&lt;br /&gt; yield 5 + newNum&lt;br /&gt; yield 6&lt;br /&gt;}&lt;br /&gt;const returnNextElement = createFlow()&lt;br /&gt;const element1 = returnNextElement.next() // 10&lt;br /&gt;const element2 = returnNextElement.next(2) // 7&lt;/blockquote&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;Async is a sort of a generator function that continues execution automatically when promise resolves.&lt;br /&gt;&lt;/li&gt;&lt;/ul&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;",
+         "link": "https://5times1.blogspot.com/2021/08/the-new-hard-parts-frontendmasters.html",
+         "published": 1630167060000,
+         "created": 1630167060000,
+         "category": {
+            "$text": "NewHardParts",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "React Native v2 (frontendmasters)",
+         "description": "&lt;p&gt;&amp;nbsp;Completed lectures.&lt;/p&gt;&lt;p&gt;A lot of CSS that works on web doesn&#39;t work on RN. Eg. no grid, no background-image, no animations.&lt;br /&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;Final ideas:&lt;/p&gt;&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;check out animations for RN with https://github.com/lottie-react-native/lottie-react-native&lt;/li&gt;&lt;li&gt;&amp;lt;Image /&amp;gt; compoenet&#39;s OKish when used with images inside app, otherwise better caching etc. https://github.com/DylanVann/react-native-fast-image&lt;/li&gt;&lt;li&gt;advanced native navigation https://reactnavigation.org/&lt;br /&gt;&lt;/li&gt;&lt;/ul&gt;",
+         "link": "https://5times1.blogspot.com/2021/08/react-native-v2-frontendmasters_24.html",
+         "published": 1629822240000,
+         "created": 1629822240000,
+         "category": {
+            "$text": "ReactNative",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      },
+      {
+         "title": "React Native, v2 (frontendmasters)",
+         "description": "&lt;ul style=&quot;text-align: left;&quot;&gt;&lt;li&gt;useState, useCallback, useEffect, fetch... are&amp;nbsp; executed in JS engine, therefore - used the same&lt;/li&gt;&lt;li&gt;useCallback can be used to simplify useEffect logic by calling a function inside a component without redefining the whole function on every render&lt;/li&gt;&lt;li&gt;for testing, react-native-testing-library, and end2end Detox&lt;/li&gt;&lt;li&gt;FlatList has onRefresh prop used when refreshed by pulling down&lt;/li&gt;&lt;li&gt;forms have different built in elements with some props (TextInput + multiline, Picker = select, Switch = toggle button...)&lt;/li&gt;&lt;li&gt;should check out documentation and React Native Community (https://github.com/react-native-community/) which feature semi-official components&lt;br /&gt;&lt;/li&gt;&lt;/ul&gt;",
+         "link": "https://5times1.blogspot.com/2021/08/react-native-v2-frontendmasters.html",
+         "published": 1629743760000,
+         "created": 1629743760000,
+         "category": {
+            "$text": "ReactNative",
+            "domain": "http://www.blogger.com/atom/ns#"
+         },
+         "enclosures": [],
+         "media": {}
+      }
+   ]
+}

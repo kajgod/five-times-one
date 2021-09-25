@@ -1,2 +1,2 @@
 # five-times-one
-Educational portal
+Personal education page (for now)
