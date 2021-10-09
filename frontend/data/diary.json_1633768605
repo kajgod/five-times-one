@@ -7,50 +7,9 @@
       "RxJS",
       "Firebase",
       "ReactNative",
-      "C++",
-      "NewHardParts",
-      "coputer science"
+      "NewHardParts"
    ],
    "items": [
-      {
-         "title": "Complete Intro to Computer Science (frontendmasters)",
-         "description": "<p><b>&nbsp; BigO </b>(computational complexity, time complexity): processor&nbsp; </p><p>hints: in most cases look for the number of embedded loops; what complexity is OK is almost always an &quot;it depends&quot; case... how large dataset? how important preformance?</p><p></p><ul style=&quot;text-align: left;&quot;><li>O(1) - constant time</li><li>O(n) - linear time</li><li>O(n2) - quadratic time</li><li>O(log n) - logarithmic time</li></ul><div><b>Spatial complexity </b>(also uses BigO): how much RAM we are using&nbsp; </div><div><ul style=&quot;text-align: left;&quot;><li>linear complexity increases by same amount with every new element in dataset</li><li>logarithmic complexity increases more at first elements, starts to grow in smaller increments as the dataset gets larger</li><li>constant doesn&#39;t increase with dataset (eg. in C++ we create array with 100 elements no matter how many of them are filled with data)</li><li>&nbsp; quadratic would be if for every new element we add &amp;amp; increase size of all former elements by this increase (stacking data on structures for example)</li></ul></div><p></p>",
-         "link": "https://5times1.blogspot.com/2021/10/complete-intro-to-computer-science.html",
-         "published": 1633547340000,
-         "created": 1633547340000,
-         "category": {
-            "$text": "coputer science",
-            "domain": "http://www.blogger.com/atom/ns#"
-         },
-         "enclosures": [],
-         "media": {}
-      },
-      {
-         "title": "Asynchronous Programming in JavaScript (with Rx.js Observables) (frontendmasters)",
-         "description": "<p>&nbsp; completed course</p><p></p><ul style=&quot;text-align: left;&quot;><li>doAction (now depricated) is used for transparently causing side-effects, while keeping functions such as map pure. in new version there are two aliases:</li><ul><li>do: exactly the same as doAction</li><li><b>tap</b>: mostly used! the same, but pipeable</li></ul><li>there are two way to subscribe to observable:</li><ul><li>observer object (most common):</li></ul></ul><div>observable.subscribe({</div>&nbsp;  &nbsp;  next(x) { console.log(&#39;got value &#39; + x); },<br />&nbsp;  &nbsp;  error(err) { console.error(&#39;something wrong occurred: &#39; + err); },<br />&nbsp;  &nbsp;  complete() { console.log(&#39;done&#39;); }<br />});<br /><p></p><div style=&quot;text-align: left;&quot;><ul style=&quot;text-align: left;&quot;><ul><li>three functions (the same functions, just without object notation around them)</li></ul><li>combineLatest (depricated, now replaced with <b>combineLatestWith</b>)&nbsp; combines the latest values from all passed observables and the source into arrays.&nbsp; Once all sources emit at least one value, all of the latest values will be emitted as an array.<br /></li><ul><li>it was used for example where there are two textboxes that need autosaving, but only after both are at least started to fill (check if password and confirm password are the same is a good example!)</li></ul></ul></div>",
-         "link": "https://5times1.blogspot.com/2021/10/asynchronous-programming-in-javascript.html",
-         "published": 1633065420000,
-         "created": 1633065420000,
-         "category": {
-            "$text": "RxJS",
-            "domain": "http://www.blogger.com/atom/ns#"
-         },
-         "enclosures": [],
-         "media": {}
-      },
-      {
-         "title": "C++ All-in-One",
-         "description": "<p>Stack vs. heap</p><p></p><ul style=&quot;text-align: left;&quot;><li>stack holds execution contexts of functions, first in last out</li><li>completing a function removes the context from function stack and thus releases memory</li><li>heap is assorted pile of data, no garbage collection</li></ul>Pointer vs. reference<p></p><p></p><ul style=&quot;text-align: left;&quot;><li>apart from sending a pointer address, sharing a variable from execution context can be done with passing by reference (differs only in definition, it is called as a normal function... no way of knowing of side effects without checking the definition):</li></ul><blockquote><div>void doSomething(int &amp;amp;a) { a++;}&nbsp; </div></blockquote><p></p><ul style=&quot;text-align: left;&quot;><li>pointer (re-assign allowed):&nbsp; int *p; p =&nbsp;  &amp;amp;x; p = &amp;amp;y;</li><ul><li>can be assigned NULL directly</li></ul><li>reference (compile error!):&nbsp; int &amp;amp;r = x; &amp;amp;r = y;</li><ul><li>must be assigned at initialization only!</li><li>cannot be reassigned</li></ul><li>pointer to a class/struct uses -&amp;gt;; a reference uses a .</li></ul><p></p>",
-         "link": "https://5times1.blogspot.com/2021/09/c-all-in-one.html",
-         "published": 1632718920000,
-         "created": 1632718920000,
-         "category": {
-            "$text": "C++",
-            "domain": "http://www.blogger.com/atom/ns#"
-         },
-         "enclosures": [],
-         "media": {}
-      },
       {
          "title": "Asynchronous Programming in JavaScript (with Rx.js Observables) (frontendmasters)",
          "description": "<p style=&quot;text-align: left;&quot;>Observable vs. Promise</p><p style=&quot;text-align: left;&quot;></p><ul style=&quot;text-align: left;&quot;><li>observable is lazy: just an object with forEach method; promise is eager.</li><li>promise does something right away, observable does nothing until forEach is called</li><li>you can&#39;t retry the promise</li><li>an observable can be converted to promise; the other way around can&#39;t be done because promise starts work on initialization&nbsp; <br /></li></ul>Observable vs. Node stream<p></p><p style=&quot;text-align: left;&quot;></p><ul style=&quot;text-align: left;&quot;><li>in observable we have producers who push data, and forEach that consumes it; streams are both</li><li>observable can stop (dispose) listening, but it doesn&#39;t have an option to pause. it&#39;s either on, or it isn&#39;t going to get the data</li><li>Node stream can push and pull data, but consumer has the option to pause, and then resume where it paused</li><li>there are no streams on frontend (no such APIs)</li></ul><p></p>",
